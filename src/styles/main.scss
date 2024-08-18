@@ -2,6 +2,10 @@
 @use 'hero';
 @use 'shows';
 @use 'plans';
+@use'available-devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 
 
 @font-face {
@@ -21,6 +25,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir, sans-serif;
+    list-style: none;
 }
 
 body {
@@ -69,16 +74,82 @@ body {
 }
 
 .button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 60px;
     font-size: 18px;
     color: variaveis.$corTextoSecundario;
-    background-color: variaveis.$corBotao;
+    background-color: variaveis.$corBotaoPrimario;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     text-transform: uppercase;
-    margin-top: 2vw;
-    margin-bottom: 8px;
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid variaveis.$corBotaoPrimario;
+
+    &:hover{
+        background-color: lighten(variaveis.$corBotaoPrimario, 3%);
+    }
+
+    &--secondary{
+        background-color: variaveis.$CorBotaoSecundario;
+        border-color: variaveis.$CorBotaoSecundario;
+
+        &:hover{
+            background-color: lighten(variaveis.$CorBotaoSecundario, 3%);
+        }
+    }
+
+    &--dark{
+        background-color: variaveis.$CorBotaoDark;
+        border-color: variaveis.$corTextoSecundario;
+
+        &:hover{
+            background-color: variaveis.$corTextoSecundario;
+            color: variaveis.$corDeFundo;
+        }
+    }
+}
+
+.image-text-section{
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    img{
+        max-width: 100%;
+    }
+
+    &__text_container{
+        padding: 0 2vw;
+
+        h2{
+            margin-bottom: 24px;
+        }
+    }
+
+    &--image-full-width{
+        display: block;
+        position: relative;
+        
+        img{
+            width: 100%;
+        }
+
+        &__text_container{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: calc(50% - 5.6vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
 }
